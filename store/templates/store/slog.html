@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+    <h2>{{ produit.nom }}</h2>
+    <h3>{{ produit.prix }}<i class="fa fa-euro"></i></h3>
+    <img src="{{ produit.photo.url }}" alt="{{ produit.nom}}" style=" max-width:250px; ">
+    <p>{{ produit.description }}</p>
+    <p>{{ produit.stock }} en stock</p>
+</center>
+{% if user.is_authenticated %}
+<center>
+    <p><a href="{% url 'ajouter_au_panier' produit.slug %}">Ajouter dans panier</a></p>
+</center>
+{% endif %}
+{% endblock %}
